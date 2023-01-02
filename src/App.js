@@ -6,7 +6,15 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handle Submit");
+    let amount = parseInt(count);
+    if (count > 9) {
+      amount = 9;
+    }
+    if (count <= 0) {
+      amount = 1;
+    }
+
+    setText(data.slice(0, amount));
   };
   return (
     <section className="section-center">
@@ -26,22 +34,9 @@ function App() {
       </form>
 
       <article>
-        <p>
-          Cillum nulla qui culpa aliquip consectetur mollit veniam laboris
-          aliqua consectetur adipisicing quis non. Eu velit qui ullamco pariatur
-          sunt laborum. Laborum quis fugiat tempor eu. Sit voluptate consequat
-          eu reprehenderit adipisicing id irure mollit ex exercitation magna.
-          Anim ipsum excepteur consequat veniam ut et ex id quis. Officia sit
-          cupidatat Lorem laboris sint ea est tempor.
-        </p>
-        <p>
-          Cillum nulla qui culpa aliquip consectetur mollit veniam laboris
-          aliqua consectetur adipisicing quis non. Eu velit qui ullamco pariatur
-          sunt laborum. Laborum quis fugiat tempor eu. Sit voluptate consequat
-          eu reprehenderit adipisicing id irure mollit ex exercitation magna.
-          Anim ipsum excepteur consequat veniam ut et ex id quis. Officia sit
-          cupidatat Lorem laboris sint ea est tempor.
-        </p>
+        {text.map((item, index) => {
+          return <p key={index}>{item}</p>;
+        })}
       </article>
     </section>
   );
